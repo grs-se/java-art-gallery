@@ -1,4 +1,4 @@
-package com.artgallery.artgallery02.artwork;
+package com.artgallery.artgallery02.models;
 
 public class Artwork {
   public Artwork(String title) {

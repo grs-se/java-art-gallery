@@ -1,8 +1,10 @@
-package com.artgallery.artgallery02.artwork;
+package com.artgallery.artgallery02.respositories;
 
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
+
+import com.artgallery.artgallery02.models.Artwork;
 
 @Repository
 public class ArtworkRepository {
