@@ -1,18 +1,19 @@
 package com.artgallery.artgallery02.controllers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.artgallery.artgallery02.models.Artwork;
-import com.artgallery.artgallery02.services.ArtworkService;
-
+import com.artgallery.artgallery02.services.impl.ArtworkService;
 
 @RestController
+@RequestMapping("/api")
 public class ArtworkController {
 
   @Autowired
@@ -22,15 +23,15 @@ public class ArtworkController {
    * @return
    */
   // TODO: query param, route param
-  @RequestMapping(value = "/artworks")
-  public ArrayList<Artwork> getArtworks() {
-    return artworkService.getArtworks();
-      // ArtworkRepository repo = new ArtworkRepository();
-      // return new ResponseEntity<>(repo.getArtworks(), HttpStatus.OK);
+  @GetMapping(value = "/artworks")
+  public List<Artwork> getArtworks() {
+    return artworkService.getAllArtworks();
+    // ArtworkRepository repo = new ArtworkRepository();
+    // return new ResponseEntity<>(repo.getArtworks(), HttpStatus.OK);
   }
-  
-  @RequestMapping(value = "createartwork", method = RequestMethod.POST)
-  public String createStudent(@RequestBody Artwork artwork){
-      return artworkService.createArtwork(artwork);
+
+  @PostMapping(value = "createartwork")
+  public String createArtwork(@RequestBody Artwork artwork) {
+    return artworkService.createArtwork(artwork);
   }
 }
